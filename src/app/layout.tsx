@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { NavBar } from "@/features/layout/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +21,12 @@ export const metadata: Metadata = {
   },
 };
 
+const navigationItems = [
+  { title: "Home", path: "/" },
+  { title: "Post Generator", path: "/post-generator" },
+  { title: "Tables", path: "/tables" },
+  { title: "Event Maker", path: "/event-maker" },
+];
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,7 +37,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <NavBar items={navigationItems} />
+        <section className="bg-light w-screen h-[calc(100vh-56px)] overflow-auto">
+          {children}
+        </section>
       </body>
     </html>
   );
