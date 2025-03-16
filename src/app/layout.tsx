@@ -38,7 +38,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NavBar items={navigationItems} />
-        <section className="bg-light w-screen h-[calc(100vh-56px)] overflow-auto">
+        <section className="bg-light w-screen h-[calc(100vh-56px)] overflow-auto px-4">
           {children}
         </section>
       </body>

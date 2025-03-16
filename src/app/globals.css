@@ -13,6 +13,9 @@
 
   --color-light: white;
   --color-dark: black;
+  --color-light-high: #bcbcbc;
+  --color-light-medium: #eeeeee;
+  --color-light-low: #f3f6f4;
   --color-primary: #be1e2d;
 }
 
