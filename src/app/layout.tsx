@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/features/layout/NavBar";
+import Provider from "./provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,7 +40,7 @@ export default function RootLayout({
       >
         <NavBar items={navigationItems} />
         <section className="bg-light w-screen h-[calc(100vh-56px)] overflow-auto px-4">
-          {children}
+          <Provider>{children}</Provider>
         </section>
       </body>
     </html>

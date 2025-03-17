@@ -4,17 +4,25 @@ import { SectionTitle } from "../shared/sectionTitle/SectionTitle";
 import { ImagePreview } from "./postPreview/ImagePreview";
 import { LayoutHost } from "./postPreview/LayoutHost";
 import { LayoutData, LayoutType } from "../layoutList/layouts/domain";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
+import { Button } from "../shared/buttons/Button";
+import { FaRegCopy } from "react-icons/fa6";
 
 type Props = {
   imageUrl?: string;
   layout: LayoutType;
   data: LayoutData;
+  post: string;
 };
 
-const PostPreview = ({ imageUrl, layout, data }: Props) => {
+const PostPreview = ({ imageUrl, layout, data, post }: Props) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
+  const [localPost, setLocalPost] = useState(post);
+
+  useEffect(() => {
+    setLocalPost(post);
+  }, [post]);
 
   const handleCreateImage = () => {
     if (cardRef.current === null) {
@@ -36,6 +44,12 @@ const PostPreview = ({ imageUrl, layout, data }: Props) => {
       });
   };
 
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(localPost);
+    } catch {}
+  };
+
   return (
     <section>
       <SectionTitle title="Post Preview" />
@@ -54,6 +68,22 @@ const PostPreview = ({ imageUrl, layout, data }: Props) => {
               onDownloadClick={handleCreateImage}
             />
           </div>
+        </div>
+      </div>
+      <div className="w-full flex flex-col bg-light-low relative pt-4 p-4">
+        <h3 className="text-lg font-semibold mb-2 text-dark">Post text</h3>
+        <textarea
+          name="prompt"
+          value={localPost}
+          onChange={(e) => setLocalPost(e.target.value)}
+          className="border p-2 w-full h-70 bg-light text-dark resize-none mb-1"
+        />
+        <div className="flex justify-end">
+          <Button
+            title="Clipboard"
+            onClick={copyToClipboard}
+            icon={<FaRegCopy className="h-5 w-5" />}
+          />
         </div>
       </div>
     </section>
