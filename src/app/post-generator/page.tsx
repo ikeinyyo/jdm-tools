@@ -15,6 +15,7 @@ import {
 export default function PostGenerator() {
   const [imageUrl, setImageUrl] = useState<string>("");
   const [data, setData] = useState<LayoutData>(layoutDataDefault);
+  const [post, setPost] = useState<string>("");
   const [layoutItemProps, setLayoutItemProps] =
     useState<LayoutItemProps | null>(layouts[0]);
 
@@ -28,13 +29,20 @@ export default function PostGenerator() {
             }
           />
           <Gallery onImageSelect={setImageUrl} selectedImage={imageUrl} />
-          <PostForm data={data} setData={setData} />
+
+          <PostForm
+            data={data}
+            setData={setData}
+            setPost={setPost}
+            system={layoutItemProps?.system || ""}
+          />
         </div>
         <div className="flex flex-col w-3/5">
           <PostPreview
             imageUrl={imageUrl}
             layout={layoutItemProps?.type || "none"}
             data={data}
+            post={post}
           />
         </div>
       </div>

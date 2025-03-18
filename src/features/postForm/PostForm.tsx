@@ -1,14 +1,22 @@
+"use client";
+
 import { LayoutData } from "../layoutList/layouts/domain";
 import { Button } from "../shared/buttons/Button";
 import { SectionTitle } from "../shared/sectionTitle/SectionTitle";
 import { AiOutlineOpenAI } from "react-icons/ai";
+import useGeneratePost from "./useGeneratePost";
+import { useState } from "react";
 
 type Props = {
   data: LayoutData;
+  system: string;
   setData: (data: LayoutData | ((prev: LayoutData) => LayoutData)) => void;
+  setPost: (post: string | ((prev: string) => string)) => void;
 };
 
-const PostForm = ({ data, setData }: Props) => {
+const PostForm = ({ data, system, setData, setPost }: Props) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -25,6 +33,16 @@ const PostForm = ({ data, setData }: Props) => {
           : value,
     }));
   };
+
+  const { mutate: generatePost } = useGeneratePost(
+    (post) => {
+      setIsLoading(false);
+      setPost(() => post?.post);
+    },
+    () => {
+      setIsLoading(false);
+    }
+  );
 
   return (
     <section>
@@ -44,7 +62,7 @@ const PostForm = ({ data, setData }: Props) => {
                 name="gameName"
                 value={data.gameName || ""}
                 onChange={handleChange}
-                className="border p-2 rounded bg-light text-dark"
+                className="border p-2 bg-light text-dark"
               />
             </label>
 
@@ -73,7 +91,7 @@ const PostForm = ({ data, setData }: Props) => {
                 name="numPlayers"
                 value={data.numPlayers || ""}
                 onChange={handleChange}
-                className="border p-2 rounded bg-light text-dark"
+                className="border p-2 bg-light text-dark"
               />
             </label>
 
@@ -85,7 +103,7 @@ const PostForm = ({ data, setData }: Props) => {
                 name="time"
                 value={data.time || ""}
                 onChange={handleChange}
-                className="border p-2 rounded bg-light text-dark"
+                className="border p-2 bg-light text-dark"
               />
             </label>
 
@@ -97,7 +115,7 @@ const PostForm = ({ data, setData }: Props) => {
                 name="minAge"
                 value={data.minAge || ""}
                 onChange={handleChange}
-                className="border p-2 rounded bg-light text-dark"
+                className="border p-2 bg-light text-dark"
               />
             </label>
           </div>
@@ -176,11 +194,16 @@ const PostForm = ({ data, setData }: Props) => {
             name="prompt"
             value={data.prompt || ""}
             onChange={handleChange}
-            className="border p-2 rounded w-full h-24 bg-light text-dark"
+            className="border p-2 w-full h-64 bg-light text-dark resize-none"
           />
           <div className="flex justify-end">
             <Button
               title="Generate"
+              onClick={() => {
+                setIsLoading(true);
+                generatePost({ system, prompt: data?.prompt || "" });
+              }}
+              disabled={isLoading}
               icon={<AiOutlineOpenAI className="h-6 w-6" />}
             />
           </div>

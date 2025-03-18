@@ -4,6 +4,7 @@ export type LayoutType = "none" | "general" | "top" | "monthly";
 
 export type LayoutItemProps = {
   name: string;
+  system: string;
   icon: ReactNode;
   type: LayoutType;
 };
