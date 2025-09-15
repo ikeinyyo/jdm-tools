@@ -1,92 +1,115 @@
 const blank = "Eres una IA que traduce al inglés";
+
 const review = `
-Genera un post en formato atractivo y estructurado sobre un juego de mesa.
+Genera un texto atractivo y estructurado para Instagram sobre un juego de mesa.
 
 Debe incluir:
 
-1️⃣ Título con emojis: Usa un título llamativo que refleje la esencia del juego. Incluye emojis relacionados.  
-2️⃣ Descripción breve del juego: Explica de manera clara y concisa de qué trata el juego y su mecánica principal.  
-3️⃣ Puntuación: Asigna una calificación del 1 al 10 con una breve justificación.  
-4️⃣ Opinión personal: Explica tu experiencia con el juego, destacando qué lo hace especial o diferente.  
-5️⃣ A favor y en contra: Enumera tres puntos positivos y dos negativos sobre el juego.  
-6️⃣ Hashtags: No olvides incluir siempre los siguientes hashtags y añade algunos específicos según el tema del juego. Todos en minúscula.  
+1️⃣ Título con emojis: Una frase breve y llamativa (máx. 6-7 palabras) que capture la esencia del juego.  
+2️⃣ Descripción breve: 2-3 frases que expliquen de qué va el juego y cuál es su mecánica principal.  
+3️⃣ Puntuación: Calificación del 1 al 10 con una frase de justificación.  
+4️⃣ Opinión personal: 3-4 frases con tu experiencia y lo que lo hace especial o distinto.  
+5️⃣ A favor y en contra: 3 puntos positivos y 2 negativos, en formato lista con emojis.  
+6️⃣ Pregunta final: Una pregunta concreta y directa que fomente comentarios. Debe invitar a la gente a compartir su opinión o experiencia, o a decir con quién lo jugaría.  
+7️⃣ Hashtags: Incluye siempre la lista base fija de hashtags y al final añade 3-5 hashtags específicos del juego (según su tipo, temática o editorial).
 
-Importante: No añadas notación makrdown, porque no se va a poder renderizar.
+Importante:  
+- No uses notación markdown ni símbolos de formato como **, "#", "*" de encabezados, o bloques de código.  
+- El texto debe salir limpio, listo para pegar en Instagram.  
+- Mantén un tono cercano, directo y que fomente la interacción.  
 
 Hashtags fijos:  
-#juernesdemesa #boardgames #juegosdemesa #júpiterjuegos #bgg #tabletop #boardgamegeek #tabletopgames #juernerosjugando  
+#juernesdemesa #boardgames #juegosdemesa #júpiterjuegos #bgg #tabletop 
+#boardgamegeek #tabletopgames #juernerosjugando #mesadejuego #boardgamenight 
+#jugadoresdemesa #juegosestrategicos #juegosdeautor #aficionadosaljuego 
+#juegosenfamilia #juegosparagrupos #juegosparados #jugadoresdetablero 
+#reseñajuegosdemesa #jugandoconamigos
 
-Ejemplo de salida esperada:  
+Ejemplo de salida esperada (sin markdown):
 
-🧙‍♂️ El Señor de los Anillos: Viajes por la Tierra Media 🌍🔥  
+🌸 Mandala Stones 🎨✨
 
-Sumérgete en el legendario mundo de Tolkien con El Señor de los Anillos: Viajes por la Tierra Media, un juego cooperativo con soporte de aplicación en el que vivirás emocionantes aventuras, lucharás contra las fuerzas del mal y desarrollarás a tu personaje en una campaña llena de decisiones épicas.  
+Un abstracto lleno de color y estrategia. En Mandala Stones recolectas fichas de colores para formar patrones, compitiendo por puntos en un tablero compartido. Reglas sencillas pero decisiones tensas.
 
-⭐ Puntuación: 8.5/10 ⭐  
+⭐ Puntuación: 7.5/10 ⭐  
+Bonito y accesible, aunque puede sentirse repetitivo tras varias partidas.
 
 💭 Opinión  
-Los cooperativos temáticos no suelen ser mi fuerte, pero este es, sin duda, el mejor que he jugado. Me gusta incluso más que Las Mansiones de la Locura, sobre todo por la temática, aunque mecánicamente son muy similares. La progresión del personaje a lo largo de la campaña y la gestión de mazo aportan una profundidad estratégica muy interesante. Además, hay una gran variedad de personajes y aventuras que explorar en la Tierra Media.  
+Me encanta su estética y lo fácil que es sacarlo a mesa. Es un gran filler estratégico para grupos pequeños y familias.
 
 ✨ A favor y en contra  
-✅ Inmersión total en la Tierra Media – La narrativa y la ambientación son impecables.  
+✅ Componentes preciosos y coloridos.  
+✅ Explicación rápida y accesible.  
+✅ Buen filler para todo tipo de jugadores.  
+❌ Escasa rejugabilidad a largo plazo.  
+❌ Puede quedarse corto en profundidad estratégica.
 
-✅ Progresión del personaje – Evoluciona a tu héroe a lo largo de la campaña.  
+❓ ¿Te animarías a probarlo? ¿Qué abstracto recomendarías tú?
 
-✅ Gran rejugabilidad – Muchas aventuras y personajes diferentes para probar.  
-
-❌ Dependencia de la app – Puede no gustar a quienes prefieren una experiencia puramente de mesa.
-  
-❌ Partidas largas – Es un juego que requiere dedicación y tiempo.  
-
-#juernesdemesa #boardgames #juegosdemesa #júpiterjuegos #bgg #tabletop #boardgamegeek #tabletopgames #juernerosjugando #elseñordelosanillos #lotr #viajesporlatierramedia #cooperativo #tolkien #fantasía #aventuras #rol
+#juernesdemesa #boardgames #juegosdemesa #júpiterjuegos #bgg #tabletop #boardgamegeek #tabletopgames #juernerosjugando #mesadejuego #boardgamenight #jugadoresdemesa #juegosestrategicos #juegosdeautor #aficionadosaljuego #juegosenfamilia #juegosparagrupos #juegosparados #jugadoresdetablero #reseñajuegosdemesa #jugandoconamigos #mandalastones #abstractgames #planbgames
 `;
 
 const top = "";
 
 const monthly = `
-Genera un resumen atractivo y dinámico del mes de partidas de juegos de mesa basado en los siguientes datos:
+Genera un resumen atractivo, cercano y dinámico del mes de partidas de juegos de mesa a partir de los siguientes datos.
 
-Importante: No añadas notación makrdown, porque no se va a poder renderizar.
+Importante:
+- No uses notación markdown ni símbolos de formato (nada de **, #, etc.).
+- El texto debe estar listo para pegar en Instagram.
+- El tono debe ser entusiasta y cercano, fomentando la interacción.
+- Mantén párrafos cortos y fáciles de leer.
 
-📊 Estadísticas del mes  
-- Partidas jugadas: [Plays]  
-- Juegos diferentes: [Games]  
-- Juegos nuevos: [New]  
+📊 Estadísticas del mes
+Incluye:
+- Partidas jugadas: [Plays]
+- Juegos diferentes: [Games]
+- Juegos nuevos: [New]
 - Jugadores diferentes: [Players]
-- No hagas referencia a las ubicaciones diferentes 
+(No hagas referencia a las ubicaciones diferentes).
 
-🎲 Juegos más jugados  
-Menciona los juegos con más partidas y destaca cualquier tendencia interesante.  
+🎲 Juegos más jugados
+Menciona los juegos con más partidas y resalta cualquier tendencia (por ejemplo, si un juego se repite mucho, si hay un equilibrio entre varios o si ha surgido una sorpresa inesperada).
 
-🔥 Datos destacados  
-Resalta información curiosa, como si un juego ha dominado el mes, si ha habido muchas partidas en pocos días o si ha habido una gran variedad de títulos.  
+🔥 Datos destacados
+Incluye uno o dos puntos curiosos: por ejemplo, un juego que dominó el mes, un estreno que se repitió varias veces, o si hubo una gran variedad de títulos.
 
-🏆 Juego del mes  
-Elige un juego como "Juego del mes" basado en frecuencia de partidas o impacto en la experiencia del mes.  
+🏆 Juego del mes
+Elige un juego como "Juego del mes" basado en número de partidas o impacto especial en las sesiones. Explica brevemente por qué.
 
-🎯 Conclusión  
-Cierra con una reflexión sobre cómo ha sido el mes y qué expectativas hay para el próximo.  
+🎯 Conclusión
+Cierra con una frase reflexiva y optimista sobre el mes y una expectativa para el siguiente.
 
-Ejemplo de salida esperada:  
+❓ Pregunta del mes
+Incluye siempre una pregunta clara para animar a los seguidores a comentar.
 
-🗓️ Resumen de partidas - Marzo 2025  
+Hashtags fijos y optimizados:
+#juernesdemesa #boardgames #juegosdemesa #bgg #tabletop #boardgamegeek #estadísticas #gamingstats #juernerosjugando #juegodemesadelmes #boardgamenight #boardgamecollection #mesademagia #partidasdemesa #boardgameaddict #boardgamelife
 
-¡Marzo ha sido un mes lleno de partidas! 🎉 En total, hemos jugado 29 partidas, probando 15 juegos diferentes a lo largo de 11 días de juego. Además, descubrimos 3 nuevos juegos y compartimos mesa con 14 jugadores distintos. ¡Nada mal!  
+Ejemplo de salida esperada:
 
-🎲 Juegos más jugados  
-El gran protagonista del mes ha sido Magic: The Gathering, con 6 partidas, seguido muy de cerca por El Señor de los Anillos: Viajes por la Tierra Media con 4 partidas. Además, My Island y Similo también han visto bastante mesa con 3 partidas cada uno.  
+🗓️ Resumen de partidas - Marzo 2025
 
-🔥 Lo más destacado  
-- Magic: The Gathering sigue siendo un clásico infalible, dominando las sesiones de juego.  
-- El Señor de los Anillos: Viajes por la Tierra Media ha sido una gran aventura cooperativa este mes.  
+¡Marzo ha estado cargado de partidas y buenos momentos! 🎉 En total se jugaron 29 partidas, disfrutando de 15 juegos diferentes. Además, 3 fueron estrenos y hasta 14 jugadores distintos se sentaron a la mesa. ¡La comunidad sigue creciendo!
 
-🏆 Juego del mes: Magic: The Gathering  
-Con 6 partidas registradas, Magic ha sido el rey de la mesa en marzo. Ya sea en duelos intensos o pruebas de nuevos mazos, ha sido el juego más recurrente del mes.  
+🎲 Juegos más jugados
+El indiscutible protagonista fue Magic: The Gathering, con 6 partidas llenas de duelos intensos. Le siguió El Señor de los Anillos: Viajes por la Tierra Media con 4 partidas épicas, mientras que My Island y Similo mantuvieron el ritmo con 3 cada uno, aportando variedad y estilos muy distintos.
 
-🎯 Conclusión  
-Un mes variado y con muchas partidas, ¡y abril promete aún más juegos y desafíos! ¿Podrá otro juego destronar a Magic en el próximo mes? 🔥  
+🔥 Datos destacados
+- Magic volvió a demostrar por qué es un clásico inmortal.
+- El Señor de los Anillos trajo grandes aventuras cooperativas.
+- La mezcla de eurogames, deducción y construcción de mazos hizo que el mes fuera muy variado.
 
-#juernesdemesa #boardgames #juegosdemesa #bgg #tabletop #boardgamegeek #estadísticas #gamingstats #juernerosjugando
+🏆 Juego del mes: Magic: The Gathering
+Con 6 partidas, ha sido el rey indiscutible de marzo. Ya sea estrenando mazos o en partidas rápidas, siempre encuentra hueco en la mesa.
+
+🎯 Conclusión
+Un mes lleno de variedad, risas y estrategia. Abril promete novedades, más jugadores y, quién sabe, ¡quizás un nuevo campeón en la mesa! 🔥
+
+❓ Pregunta del mes
+¿Qué juego ha sido el más jugado para ti? 👑
+
+#juernesdemesa #boardgames #juegosdemesa #bgg #tabletop #boardgamegeek #estadísticas #gamingstats #juernerosjugando #juegodemesadelmes #boardgamenight #boardgamecollection #mesademagia #partidasdemesa #boardgameaddict #boardgamelife
 `;
 
 export { blank, review, top, monthly };

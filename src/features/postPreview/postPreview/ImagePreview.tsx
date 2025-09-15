@@ -67,7 +67,9 @@ const ImagePreview = ({ imageUrl, data, onDownloadClick }: Props) => {
                       style={{
                         filter: `brightness(${data.brightness ?? 1}) contrast(${
                           data.contrast ?? 1
-                        }) saturate(${data.saturation ?? 1})`,
+                        }) saturate(${data.saturation ?? 1}) blur(${
+                          data.blur ?? 0
+                        }px)`,
                       }}
                     />
                   </div>

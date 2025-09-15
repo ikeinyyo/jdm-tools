@@ -30,6 +30,12 @@ const layouts: LayoutItemProps[] = [
     type: "monthly",
     system: monthly,
   },
+  {
+    name: "Sentence",
+    icon: <FaCalendarAlt className={iconClassName} />,
+    type: "sentence",
+    system: blank,
+  },
 ];
 
 export { layouts };

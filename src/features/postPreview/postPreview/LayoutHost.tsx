@@ -1,6 +1,7 @@
 import { LayoutData, LayoutType } from "@/features/layoutList/layouts/domain";
 import { GeneralLayout } from "@/features/layoutList/layouts/GeneralLayout";
 import { MonthlySummaryLayout } from "@/features/layoutList/layouts/MonthlySummaryLayout";
+import { SentenceLayout } from "@/features/layoutList/layouts/SentenceLayout";
 import { TopLayout } from "@/features/layoutList/layouts/TopLayout";
 
 type Props = {
@@ -22,6 +23,10 @@ const LayoutHost = ({ layout, data }: Props) => {
       ) : layout === "monthly" ? (
         <div>
           <MonthlySummaryLayout data={data} />
+        </div>
+      ) : layout === "sentence" ? (
+        <div>
+          <SentenceLayout data={data} />
         </div>
       ) : (
         <></>

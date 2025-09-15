@@ -170,20 +170,49 @@ const PostForm = ({ data, system, setData, setPost }: Props) => {
                 className="accent-primary"
               />
             </label>
-          </div>
 
-          {/* Invert Layout */}
-          <div className="mt-4">
-            <label className="flex items-center gap-2">
+            {/* Blur */}
+            <label className="flex flex-col">
+              Blur: {data.blur || 0} / 20
               <input
-                type="checkbox"
-                name="isInvert"
-                checked={data.isInvert || false}
+                type="range"
+                name="blur"
+                min="0"
+                max="20"
+                step="1"
+                value={data.blur || 0}
                 onChange={handleChange}
                 className="accent-primary"
               />
-              Invert Layout
             </label>
+          </div>
+
+          {/* Invert Layout */}
+          <div className="flex gap-4">
+            <div className="mt-4">
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="isInvert"
+                  checked={data.isInvert || false}
+                  onChange={handleChange}
+                  className="accent-primary"
+                />
+                Invert Layout
+              </label>
+            </div>
+            <div className="mt-4">
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="showScore"
+                  checked={data.showScore || false}
+                  onChange={handleChange}
+                  className="accent-primary"
+                />
+                Show Score
+              </label>
+            </div>
           </div>
         </div>
 

@@ -12,7 +12,7 @@ const GeneralLayout = ({ data }: Props) => {
       <div
         className={`${
           data?.isInvert ? "left-0" : "right-0"
-        } absolute top-10 bg-primary text-light text-4xl font-bold px-4 py-2 shadow-md shadow-black uppercase z-10`}
+        } absolute top-10 bg-primary text-light text-4xl font-bold px-4 py-2 shadow-md shadow-black uppercase z-10  whitespace-pre-line`}
       >
         {data?.gameName}
       </div>
@@ -44,7 +44,7 @@ const GeneralLayout = ({ data }: Props) => {
           )}
         </div>
       )}
-      {data.score && (
+      {data.score && data.showScore && (
         <div
           className={`${
             data.isInvert ? "right-0" : "left-0"

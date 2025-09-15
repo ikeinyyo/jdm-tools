@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type LayoutType = "none" | "general" | "top" | "monthly";
+export type LayoutType = "none" | "general" | "top" | "monthly" | "sentence";
 
 export type LayoutItemProps = {
   name: string;
@@ -13,7 +13,9 @@ export type LayoutData = {
   brightness?: number;
   contrast?: number;
   saturation?: number;
+  blur?: number;
   isInvert?: boolean;
+  showScore?: boolean;
 
   gameName?: string;
   score?: number;
@@ -27,6 +29,7 @@ export type LayoutData = {
 const layoutDataDefault: LayoutData = {
   gameName: "Juernes de Mesa",
   isInvert: false,
+  showScore: false,
   time: "30' - 45'",
   numPlayers: "1 - 4",
   minAge: "12+",
